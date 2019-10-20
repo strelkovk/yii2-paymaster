@@ -1,5 +1,5 @@
 <?php
-namespace pistol88\paymaster\controllers;
+namespace strelkovk\paymaster\controllers;
 
 use yii;
 use yii\web\Controller;

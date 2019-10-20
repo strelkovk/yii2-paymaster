@@ -2,20 +2,20 @@ Yii2-paymaster
 ==========
 В составе модуля содержится виджет оплаты заказа через paymaster.ru. В виджет передается модель заказа, которая должна имплементировать интерфейс interfaces/Order.
 
-Модуль написан в основном для [pistol88/yii2-order](https://github.com/pistol88/yii2-order), но подойдет для любого сайта, где есть модель заказа.
+Модуль написан в основном для [strelkovk/yii2-order](https://github.com/strelkovk/yii2-order), но подойдет для любого сайта, где есть модель заказа.
 
 Установка
 ---------------------------------
 Выполнить команду
 
 ```
-php composer require pistol88/yii2-paymaster "*"
+php composer require strelkovk/yii2-paymaster "*"
 ```
 
 Или добавить в composer.json
 
 ```
-"pistol88/yii2-paymaster": "*",
+"strelkovk/yii2-paymaster": "*",
 ```
 
 И выполнить
@@ -31,13 +31,13 @@ php composer update
 ```php
     'modules' => [
         'paymaster' => [
-            'class' => 'pistol88\paymaster\Module',
+            'class' => 'strelkovk\paymaster\Module',
             'merchantId' => 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', //Идентификатор мерчанта, выдается автоматически в личном кабинете
             'secret' => 'XXXXXX', //Секретный ключ, задается вручную в настройках магазина
             'thanksUrl' => '/page/spasibo-za-zakaz', //Страница, куда попадает пользователь после оплаты. Туда ГЕТ параметром будет передан также номер заказа.
             'failUrl' => '/page/problema-s-oplatoy', //Страница, куда попадает пользовать в случае неудачной оплаты.
             'currency' => 'RUB', //Яснопонятно
-            'orderModel' => 'pistol88\order\models\Order', //Модель заказа. Эта модель должна имплементировать интерфейс pistol88\paymaster\interfaces\Order. В момент списания денег будет вызываться $model->setPaymentStatus('yes').
+            'orderModel' => 'strelkovk\order\models\Order', //Модель заказа. Эта модель должна имплементировать интерфейс strelkovk\paymaster\interfaces\Order. В момент списания денег будет вызываться $model->setPaymentStatus('yes').
         ],
         //...
     ],
@@ -47,12 +47,12 @@ php composer update
 
 Виджеты
 ---------------------------------
-За вывод формы оплаты отвечает виджет pistol88\paymaster\widgets\PaymentForm.
+За вывод формы оплаты отвечает виджет strelkovk\paymaster\widgets\PaymentForm.
 
 Скорее всего, самое уместное место для виджета - страница "спасибо за заказ.
 
 ```php
-<?=\pistol88\paymaster\widgets\PaymentForm::widget([
+<?=\strelkovk\paymaster\widgets\PaymentForm::widget([
     'autoSend' => false,
     'orderModel' => $model,
     'description' => 'Оплата заказа'

@@ -1,7 +1,7 @@
 The yii2-paymaster module is free software. It is released under the terms of
 the following BSD License.
 
-Copyright © 2016 by pistol88 (https://github.com/pistol88)
+Copyright © 2016 by strelkovk (https://github.com/strelkovk)
 All rights reserved. 
 
 Redistribution and use in source and binary forms, with or without

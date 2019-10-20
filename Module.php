@@ -1,5 +1,5 @@
 <?php
-namespace pistol88\paymaster;
+namespace strelkovk\paymaster;
 
 use yii;
 
