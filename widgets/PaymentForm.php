@@ -1,5 +1,5 @@
 <?php
-namespace strelkovk\paymaster\widgets;
+namespace pistol88\paymaster\widgets;
 
 use yii;
 

@@ -1,5 +1,5 @@
 <?php
-namespace strelkovk\paymaster\interfaces;
+namespace pistol88\paymaster\interfaces;
 
 interface Order
 {
