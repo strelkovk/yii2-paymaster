@@ -11,6 +11,7 @@ class Module extends \yii\base\Module
     public $currency = 'RUB';
     public $secret = '';
     public $merchantId = '';
+    public $orderModel;
 
     public function init()
     {
