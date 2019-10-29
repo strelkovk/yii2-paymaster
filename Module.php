@@ -12,6 +12,7 @@ class Module extends \yii\base\Module
     public $secret = '';
     public $merchantId = '';
     public $orderModel;
+    public $debugMode = false;
 
     public function init()
     {

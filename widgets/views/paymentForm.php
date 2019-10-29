@@ -8,6 +8,9 @@ use yii\helpers\Url;
     <input type="hidden" name="LMI_CURRENCY" value="<?=$module->currency;?>" />
     <input type="hidden" name="LMI_PAYMENT_NO" value="<?=$orderModel->getId();?>" />
     <input type="hidden" name="LMI_PAYMENT_DESC" value="<?=$description;?>" />
+    <?php if($module->debugMode): ?>
+        <input type="hidden" name="LMI_SIM_MODE" value="<?= $module->debugMode ?>" />
+    <?php endif; ?>
     <input type="hidden" name="LMI_PAYMENT_NOTIFICATION_URL" value="<?=Url::toRoute(['/paymaster/paymaster/result'], true);?>" />
     <input type="hidden" name="LMI_FAILURE_URL" value="<?=Url::toRoute([$module->failUrl, 'id' => $orderModel->getId(), 'cash' => true], true);?>" />
     <input type="hidden" name="LMI_SUCCESS_URL" value="<?=Url::toRoute([$module->thanksUrl, 'id' => $orderModel->getId(), 'cash' => true], true);?>" />
