@@ -1,5 +1,7 @@
 <?php
-use yii\helpers\Url;
+    use yii\helpers\Url;
+    use yii\bootstrap\Html;
+    $index = 0;
 ?>
 <form action="https://paymaster.ru/Payment/Init" method="post" id="payment_paymaster_form">
     <input type="hidden" name="LMI_MERCHANT_ID" value="<?=$module->merchantId;?>" />
@@ -11,6 +13,14 @@ use yii\helpers\Url;
     <?php if($module->debugMode): ?>
         <input type="hidden" name="LMI_SIM_MODE" value="<?= $module->debugMode ?>" />
     <?php endif; ?>
+    <?php foreach ($orderModel->getItems() as $item): ?>
+
+            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].NAME" value="<?= $orderModel->name) ?>"/>
+            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].QTY" value="<?= $item->amount ?>"/>
+            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].PRICE" value="<?= $item->price ?>"/>
+            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].TAX" value="no_vat"/>
+
+    <?php $index++; endforeach; ?>
     <input type="hidden" name="LMI_PAYMENT_NOTIFICATION_URL" value="<?=Url::toRoute(['/paymaster/paymaster/result'], true);?>" />
     <input type="hidden" name="LMI_FAILURE_URL" value="<?=Url::toRoute([$module->failUrl, 'id' => $orderModel->getId(), 'cash' => true], true);?>" />
     <input type="hidden" name="LMI_SUCCESS_URL" value="<?=Url::toRoute([$module->thanksUrl, 'id' => $orderModel->getId(), 'cash' => true], true);?>" />

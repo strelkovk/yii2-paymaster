@@ -8,4 +8,6 @@ interface Order
     public function getCost();
 
     public function setPaymentStatus($status);
+
+    public function getItems();
 }
