@@ -1,6 +1,6 @@
 <?php
     use yii\helpers\Url;
-    use yii\bootstrap\Html;
+    use yii\helpers\Html;
     $index = 0;
 ?>
 <form action="https://paymaster.ru/Payment/Init" method="post" id="payment_paymaster_form">
@@ -15,10 +15,10 @@
     <?php endif; ?>
     <?php foreach ($orderModel->getItems() as $item): ?>
 
-            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].NAME" value="<?= $orderModel->name) ?>"/>
-            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].QTY" value="<?= $item->amount ?>"/>
-            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].PRICE" value="<?= $item->price ?>"/>
-            <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].TAX" value="no_vat"/>
+        <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].NAME" value="<?= trim(Html::encode($item->name)) ?>"/>
+        <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].QTY" value="<?= $item->amount ?>"/>
+        <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].PRICE" value="<?= $item->price ?>"/>
+        <input type="hidden" name="LMI_SHOPPINGCART.ITEMS[<?= $index ?>].TAX" value="no_vat"/>
 
     <?php $index++; endforeach; ?>
     <input type="hidden" name="LMI_PAYMENT_NOTIFICATION_URL" value="<?=Url::toRoute(['/paymaster/paymaster/result'], true);?>" />
